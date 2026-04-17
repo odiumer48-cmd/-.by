@@ -9,7 +9,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* ========== КАСТОМНЫЕ ИКОНКИ ========== */
 /* ========== КАСТОМНЫЕ ИКОНКИ ========== */
 .icon {
     width: 28px;
@@ -759,60 +758,80 @@ body {
 </div>
 
 <div class="container">
-    <!-- ГЛАВНАЯ -->
-    <div id="home" class="page show">
-        <div class="welcome-card animate-on-scroll">
-            <h2>🛡️ Добро пожаловать в КиберПраво.by!</h2>
-            <p>Узнай, как защитить себя от кибермошенников, проверь свои знания и скачай памятку</p>
-        </div>
+<!-- ГЛАВНАЯ СТРАНИЦА -->
+<div id="home" class="page show">
+    <div class="welcome-card animate-on-scroll">
+        <h2>🛡️ Добро пожаловать в КиберПраво.by!</h2>
+        <p>Узнай, как защитить себя от кибермошенников, проверь свои знания и скачай памятку</p>
+    </div>
 
-        <div class="progress-section animate-on-scroll">
-            <h3>📊 Твой прогресс</h3>
-            <div class="progress-bar-container">
-                <div class="progress-fill-main" id="mainProgress"></div>
+    <div class="progress-section animate-on-scroll">
+        <h3>📊 Твой прогресс</h3>
+        <div class="progress-bar-container">
+            <div class="progress-fill-main" id="mainProgress"></div>
+        </div>
+        <p id="progressText">Пройди тест и отметь пункты чек-листа!</p>
+    </div>
+
+    <div class="chart-container animate-on-scroll">
+        <h3>📈 Статистика киберугроз в Беларуси</h3>
+        <canvas id="statsChart"></canvas>
+        <p style="font-size: 0.7rem; margin-top: 10px; text-align: center;">Источник: МВД РБ, данные за 2023-2025</p>
+    </div>
+
+    <div class="two-columns">
+        <!-- ЛЕВАЯ КОЛОНКА: Топ-5 схем мошенников с иконками -->
+        <div class="card-modern animate-on-scroll">
+            <h3>⚠️ Топ-5 схем мошенников</h3>
+            <div class="mini-grid">
+                <div class="mini-card tooltip" data-tip="Поддельные сайты банков, соцсетей" onclick="openModal('Фишинг', 'Поддельные сайты банков, соцсетей. Крадут пароли. Всегда проверяй адрес вручную.')">
+                    <div class="icon-large icon-phishing"></div>
+                    <div class="title">Фишинг</div>
+                </div>
+                <div class="mini-card tooltip" data-tip="Звонят и просят код из смс" onclick="openModal('Звонок из банка', 'Клади трубку. Перезвони в банк по номеру с карты. Код из смс никому не говори.')">
+                    <div class="icon-large icon-call"></div>
+                    <div class="title">Звонок из банка</div>
+                </div>
+                <div class="mini-card tooltip" data-tip="Пишут от имени друга" onclick="openModal('Взлом аккаунта', 'Позвони другу. Не переводи деньги. Включи двухфакторную аутентификацию.')">
+                    <div class="icon-large icon-hack"></div>
+                    <div class="title">Взлом аккаунта</div>
+                </div>
+                <div class="mini-card tooltip" data-tip="Выигрыш за оплату" onclick="openModal('Фейковый выигрыш', 'Никогда не плати за выигрыш. Настоящие конкурсы бесплатны.')">
+                    <div class="icon-large icon-prize"></div>
+                    <div class="title">Фейковый выигрыш</div>
+                </div>
+                <div class="mini-card tooltip" data-tip="Оплата напрямую продавцу" onclick="openModal('Маркетплейсы', 'Оплачивай только через сайт. Не переходи в Telegram к продавцу.')">
+                    <div class="icon-large icon-market"></div>
+                    <div class="title">Маркетплейсы</div>
+                </div>
+                <div class="mini-card tooltip" data-tip="Обещают лёгкие деньги" onclick="openModal('Инвестиции', 'Слишком быстрая прибыль = обман. Не ведись на обещания лёгких денег.')">
+                    <div class="icon-large icon-invest"></div>
+                    <div class="title">Инвестиции</div>
+                </div>
             </div>
-            <p id="progressText">Пройди тест и отметь пункты чек-листа!</p>
         </div>
 
-        <div class="chart-container animate-on-scroll">
-            <h3>📈 Статистика киберугроз в Беларуси</h3>
-            <canvas id="statsChart"></canvas>
-            <p style="font-size: 0.7rem; margin-top: 10px; text-align: center;">Источник: МВД РБ, данные за 2023-2025</p>
+        <!-- ПРАВАЯ КОЛОНКА: Глоссарий -->
+        <div class="card-modern animate-on-scroll">
+            <h3>📖 Глоссарий терминов</h3>
+            <input type="text" class="glossary-search" id="glossarySearch" placeholder="🔍 Поиск по глоссарию...">
+            <div id="glossaryContainer"></div>
         </div>
+    </div>
 
-        <div class="two-columns">
-            <div class="card-modern animate-on-scroll">
-                <h3>⚠️ Топ-5 схем мошенников</h3>
-                <div class="mini-grid">
-                    <div class="mini-card tooltip" data-tip="Поддельные сайты банков, соцсетей" onclick="openModal('Фишинг', 'Поддельные сайты банков, соцсетей. Крадут пароли. Всегда проверяй адрес вручную.')">
-   <div class="mini-card" ... onclick="openModal('Фишинг', ...)">
-    <div class="icon icon-phishing" style="width: 32px; height: 32px; margin: 0 auto 8px;"></div>
-    <div class="title">Фишинг</div>
-</div>
-                    <div class="mini-card tooltip" data-tip="Звонят и просят код из смс" onclick="openModal('Звонок из банка', 'Клади трубку. Перезвони в банк по номеру с карты. Код из смс никому не говори.')">
-      <div class="mini-card tooltip" data-tip="Звонят и просят код из смс" onclick="openModal('Звонок из банка', 'Клади трубку. Перезвони в банк по номеру с карты. Код из смс никому не говори.')">
-    <div class="icon icon-call" style="width: 32px; height: 32px; margin: 0 auto 8px;"></div>
-    <div class="title">Звонок из банка</div>
-</div>
-                    <div class="mini-card tooltip" data-tip="Пишут от имени друга" onclick="openModal('Взлом аккаунта', 'Позвони другу. Не переводи деньги. Включи двухфакторную аутентификацию.')">
- <div class="mini-card tooltip" data-tip="Пишут от имени друга" onclick="openModal('Взлом аккаунта', 'Позвони другу. Не переводи деньги. Включи двухфакторную аутентификацию.')">
-    <div class="icon icon-hack" style="width: 32px; height: 32px; margin: 0 auto 8px;"></div>
-    <div class="title">Взлом аккаунта</div>
-</div>
-                    <div class="mini-card tooltip" data-tip="Выигрыш за оплату" onclick="openModal('Фейковый выигрыш', 'Никогда не плати за выигрыш. Настоящие конкурсы бесплатны.')">
- <div class="mini-card tooltip" data-tip="Выигрыш за оплату" onclick="openModal('Фейковый выигрыш', 'Никогда не плати за выигрыш. Настоящие конкурсы бесплатны.')">
-    <div class="icon icon-prize" style="width: 32px; height: 32px; margin: 0 auto 8px;"></div>
-    <div class="title">Фейковый выигрыш</div>
-</div>
-                    <div class="mini-card tooltip" data-tip="Оплата напрямую продавцу" onclick="openModal('Маркетплейсы', 'Оплачивай только через сайт. Не переходи в Telegram к продавцу.')">
- <div class="mini-card tooltip" data-tip="Оплата напрямую продавцу" onclick="openModal('Маркетплейсы', 'Оплачивай только через сайт. Не переходи в Telegram к продавцу.')">
-    <div class="icon icon-market" style="width: 32px; height: 32px; margin: 0 auto 8px;"></div>
-    <div class="title">Маркетплейсы</div>
-</div>
-                    <div class="mini-card tooltip" data-tip="Обещают лёгкие деньги" onclick="openModal('Инвестиции', 'Слишком быстрая прибыль = обман. Не ведись на обещания лёгких денег.')">
-<div class="mini-card tooltip" data-tip="Обещают лёгкие деньги" onclick="openModal('Инвестиции', 'Слишком быстрая прибыль = обман. Не ведись на обещания лёгких денег.')">
-    <div class="icon icon-invest" style="width: 32px; height: 32px; margin: 0 auto 8px;"></div>
-    <div class="title">Инвестиции</div>
+    <div class="info-block animate-on-scroll" style="text-align: center;">
+        <h3>💡 Совет дня</h3>
+        <p><span class="icon-tip-small"></span> <span id="dailyTip">Загрузка...</span></p>
+    </div>
+
+    <div class="info-block animate-on-scroll" style="text-align: center;">
+        <h3>📞 Экстренные телефоны</h3>
+        <p style="font-size: 1.2rem; margin: 10px 0;">
+            <strong>102</strong> — милиция &nbsp;|&nbsp;
+            <strong>8-801-100-16-11</strong> — детский телефон доверия
+        </p>
+        <p>По данным МВД Беларуси (2025): каждый день ~100 киберпреступлений. 60% пострадавших — до 25 лет.</p>
+    </div>
 </div>
                 </div>
             </div>
