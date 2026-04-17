@@ -9,82 +9,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-/* ========== КАСТОМНЫЕ ИКОНКИ ========== */
-.icon {
-    width: 28px;
-    height: 28px;
-    display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    vertical-align: middle;
-    margin-right: 8px;
-}
-
-/* Большие иконки для карточек */
-.icon-large {
-    width: 42px;
-    height: 42px;
-    display: block;
-    margin: 0 auto 10px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-/* Связываем файлы с классами */
-.icon-stats { background-image: url('176431201.png'); }
-.icon-call { background-image: url('176431189.png'); }
-.icon-security { background-image: url('176431190.png'); }
-.icon-market { background-image: url('176431191.png'); }
-.icon-map { background-image: url('176431192.png'); }
-.icon-tip { background-image: url('176431193.png'); }
-.icon-hack { background-image: url('176431194.png'); }
-.icon-prize { background-image: url('176431195.png'); }
-.icon-romance { background-image: url('176431196.png'); }
-.icon-star { background-image: url('176431197.png'); }
-.icon-refresh { background-image: url('176431198.png'); }
-.icon-check { background-image: url('176431199.png'); }
-.icon-glossary { background-image: url('176431200.png'); }
-.icon-invest { background-image: url('176431188.png'); }
-.icon-phishing { background-image: url('176431188.png'); }
-/* Статистика в шапке */
-.icon-stats { background-image: url('176431201.png'); }
-
-/* Карточки угроз */
-.icon-phishing { background-image: url('176431188.png'); }      /* 💰 - инвестиции/фишинг */
-.icon-call { background-image: url('176431189.png'); }         /* 📞 - звонок из банка */
-.icon-hack { background-image: url('176431194.png'); }         /* 👤 - взлом аккаунта */
-.icon-market { background-image: url('176431191.png'); }       /* 🛒 - маркетплейсы */
-.icon-prize { background-image: url('176431195.png'); }        /* 💸 - фейковый выигрыш */
-.icon-invest { background-image: url('176431188.png'); }       /* 💰 - инвестиции */
-
-/* Карта угроз */
-.icon-map { background-image: url('176431192.png'); }          /* 📍 - метка */
-
-/* Глоссарий */
-.icon-glossary { background-image: url('176431200.png'); }     /* ☁️ - облако/глоссарий */
-
-/* Совет дня */
-.icon-tip { background-image: url('176431193.png'); }          /* 💡 - лампочка */
-
-/* Романтическое мошенничество */
-.icon-romance { background-image: url('176431196.png'); }      /* ❤️ - сердце */
-
-/* Чек-лист */
-.icon-check { background-image: url('176431199.png'); }        /* ✅ - галочка */
-
-/* Обновления */
-.icon-refresh { background-image: url('176431198.png'); }      /* 🔄 - обновление */
-
-/* Рейтинг/отзывы */
-.icon-star { background-image: url('176431197.png'); }         /* ⭐ - звезда */
-
-/* Безопасность (замок) */
-.icon-security { background-image: url('176431190.png'); }     /* 🔒 - замок */
         }
 
-        /* ========== ТОЛЬКО ТЁМНАЯ ТЕМА ========== */
+        /* ========== ТЁМНАЯ ТЕМА ========== */
         :root {
             --bg-primary: #0a0f1e;
             --bg-secondary: #1a1e2a;
@@ -98,19 +25,41 @@
             --accent-dark: #e69500;
         }
 
-body {
-    font-family: system-ui, 'Segoe UI', sans-serif;
-    color: var(--text-primary);
-    line-height: 1.5;
-    
-    /* фоновая картинка */
-    background-image: url('1776429529.png');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #0a0f1e; /* цвет пока грузится картинка */
-}
+        body {
+            font-family: system-ui, 'Segoe UI', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.5;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0b2b3b 100%);
+            background-attachment: fixed;
+        }
+
+        /* Полупрозрачная подложка для контента */
+        .container,
+        .card-modern,
+        .quiz-wrap,
+        .generator,
+        .checklist,
+        .info-block,
+        .welcome-card,
+        .progress-section,
+        .chart-container {
+            background-color: rgba(10, 15, 30, 0.75);
+            backdrop-filter: blur(3px);
+            border-radius: 24px;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -121,7 +70,7 @@ body {
             transform: translateY(0);
         }
 
-        /* ========== ШАПКА С КАРТИНКОЙ ========== */
+        /* ========== ШАПКА ========== */
         .header {
             background: var(--header-bg);
             color: white;
@@ -132,7 +81,6 @@ body {
             overflow: hidden;
         }
 
-        /* Картинка в шапке (поверх фона, но под текстом) */
         .header::before {
             content: "";
             position: absolute;
@@ -149,7 +97,6 @@ body {
             z-index: 0;
         }
 
-        /* Текст и статистика поверх картинки */
         .header h1, .header p, .stats {
             position: relative;
             z-index: 1;
@@ -204,7 +151,6 @@ body {
             position: sticky;
             top: 0;
             z-index: 100;
-            transition: background 0.3s;
         }
         .nav button {
             background: none;
@@ -215,7 +161,6 @@ body {
             border-radius: 30px;
             cursor: pointer;
             color: var(--text-primary);
-            transition: 0.2s;
         }
         .nav button:hover { background: var(--border-color); }
         .nav button.active { background: var(--accent); color: #1a1e24; }
@@ -237,12 +182,9 @@ body {
         }
 
         .progress-section {
-            background: var(--card-bg);
-            border-radius: 24px;
             padding: 20px;
             margin-bottom: 25px;
             text-align: center;
-            transition: background 0.3s;
         }
         .progress-bar-container {
             height: 12px;
@@ -260,7 +202,6 @@ body {
         }
 
         .welcome-card {
-            background: linear-gradient(135deg, #0b2b3b, #1a4a5a);
             color: white;
             border-radius: 24px;
             padding: 30px;
@@ -277,11 +218,9 @@ body {
         @media (max-width: 800px) { .two-columns { grid-template-columns: 1fr; } }
 
         .card-modern {
-            background: var(--card-bg);
-            border-radius: 24px;
             padding: 25px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: background 0.3s, transform 0.3s;
+            transition: transform 0.3s;
         }
         .card-modern:hover { transform: translateY(-2px); }
 
@@ -345,8 +284,6 @@ body {
         .glossary-def.show { max-height: 200px; margin-bottom: 15px; }
 
         .chart-container {
-            background: var(--card-bg);
-            border-radius: 24px;
             padding: 20px;
             margin-bottom: 25px;
         }
@@ -387,11 +324,8 @@ body {
         }
 
         .info-block {
-            background: var(--gloss-bg);
-            border-radius: 20px;
             padding: 20px;
             margin: 25px 0;
-            transition: background 0.3s;
         }
 
         .quiz-wrap {
@@ -465,10 +399,7 @@ body {
         }
 
         .generator {
-            background: var(--card-bg);
-            border-radius: 24px;
             padding: 25px;
-            transition: background 0.3s;
         }
         .pass-display {
             background: #0b2b3b;
@@ -501,13 +432,10 @@ body {
             font-weight: bold;
             color: #1a1e24;
             cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         .btn-primary:hover {
             transform: scale(1.02);
             background: #ffb347;
-            box-shadow: 0 4px 12px rgba(245,166,35,0.3);
         }
         .btn-secondary {
             background: #2e7d64;
@@ -517,7 +445,6 @@ body {
             font-weight: bold;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
         }
         .btn-secondary:hover {
             background: #3a9b7d;
@@ -530,7 +457,6 @@ body {
             border-radius: 20px;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
             color: var(--text-primary);
         }
         .btn-setting:hover {
@@ -545,34 +471,10 @@ body {
             font-weight: bold;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
         }
         .btn-danger:hover {
             background: #e74c3c;
             transform: scale(1.02);
-        }
-
-        body.compact .card-modern,
-        body.compact .info-block,
-        body.compact .generator,
-        body.compact .checklist {
-            padding: 12px !important;
-        }
-        body.compact .section-title {
-            font-size: 1.2rem !important;
-            margin-bottom: 10px !important;
-        }
-
-        body.no-animation * {
-            transition: none !important;
-            animation: none !important;
-        }
-        body.no-animation .animate-on-scroll {
-            opacity: 1 !important;
-            transform: none !important;
-        }
-        body.no-animation .toast {
-            display: none;
         }
 
         .region-grid {
@@ -587,15 +489,11 @@ body {
             border-radius: 16px;
             border-left: 4px solid var(--accent);
             cursor: pointer;
-            transition: 0.2s;
         }
         .region:hover { transform: translateX(5px); }
 
         .checklist {
-            background: var(--card-bg);
-            border-radius: 24px;
             padding: 25px;
-            transition: background 0.3s;
         }
         .check-item {
             display: flex;
@@ -657,7 +555,6 @@ body {
             border-radius: 20px;
             padding: 25px;
             margin: 20px 0;
-            transition: background 0.3s;
         }
 
         .loader {
@@ -669,12 +566,6 @@ body {
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
-        .example-link {
-            transition: 0.2s;
-        }
-        .example-link:hover {
-            transform: translateY(-2px);
-        }
 
         button { cursor: pointer; }
         footer {
@@ -683,7 +574,6 @@ body {
             text-align: center;
             padding: 25px;
             margin-top: 40px;
-            transition: background 0.3s;
         }
         .toast {
             position: fixed;
@@ -736,12 +626,9 @@ body {
     <h1>КиберПраво<span>.by</span></h1>
     <p>Твои права в интернете — знай, защищай, действуй</p>
     <div class="stats">
-<div class="stat-card">
-    <span class="icon icon-stats"></span>
-    <span class="stat-number">78%</span><br>молодёжи сталкивались с обманом
-</div>
-        <div class="stat-card"><span class="stat-number" id="stat2">3 млн</span><br>атак в день</div>
-        <div class="stat-card"><span class="stat-number" id="stat3">5 мин</span><br>на взлом слабого пароля</div>
+        <div class="stat-card"><span class="stat-number">78%</span><br>молодёжи сталкивались с обманом</div>
+        <div class="stat-card"><span class="stat-number">3 млн</span><br>атак в день</div>
+        <div class="stat-card"><span class="stat-number">5 мин</span><br>на взлом слабого пароля</div>
     </div>
 </div>
 
@@ -758,81 +645,55 @@ body {
 </div>
 
 <div class="container">
-<!-- ГЛАВНАЯ СТРАНИЦА -->
-<div id="home" class="page show">
-    <div class="welcome-card animate-on-scroll">
-        <h2>🛡️ Добро пожаловать в КиберПраво.by!</h2>
-        <p>Узнай, как защитить себя от кибермошенников, проверь свои знания и скачай памятку</p>
-    </div>
-
-    <div class="progress-section animate-on-scroll">
-        <h3>📊 Твой прогресс</h3>
-        <div class="progress-bar-container">
-            <div class="progress-fill-main" id="mainProgress"></div>
+    <!-- ГЛАВНАЯ -->
+    <div id="home" class="page show">
+        <div class="welcome-card animate-on-scroll">
+            <h2>🛡️ Добро пожаловать в КиберПраво.by!</h2>
+            <p>Узнай, как защитить себя от кибермошенников, проверь свои знания и скачай памятку</p>
         </div>
-        <p id="progressText">Пройди тест и отметь пункты чек-листа!</p>
-    </div>
 
-    <div class="chart-container animate-on-scroll">
-        <h3>📈 Статистика киберугроз в Беларуси</h3>
-        <canvas id="statsChart"></canvas>
-        <p style="font-size: 0.7rem; margin-top: 10px; text-align: center;">Источник: МВД РБ, данные за 2023-2025</p>
-    </div>
-
-    <div class="two-columns">
-        <!-- ЛЕВАЯ КОЛОНКА: Топ-5 схем мошенников с иконками -->
-        <div class="card-modern animate-on-scroll">
-            <h3>⚠️ Топ-5 схем мошенников</h3>
-            <div class="mini-grid">
-                <div class="mini-card tooltip" data-tip="Поддельные сайты банков, соцсетей" onclick="openModal('Фишинг', 'Поддельные сайты банков, соцсетей. Крадут пароли. Всегда проверяй адрес вручную.')">
-                    <div class="icon-large icon-phishing"></div>
-                    <div class="title">Фишинг</div>
-                </div>
-                <div class="mini-card tooltip" data-tip="Звонят и просят код из смс" onclick="openModal('Звонок из банка', 'Клади трубку. Перезвони в банк по номеру с карты. Код из смс никому не говори.')">
-                    <div class="icon-large icon-call"></div>
-                    <div class="title">Звонок из банка</div>
-                </div>
-                <div class="mini-card tooltip" data-tip="Пишут от имени друга" onclick="openModal('Взлом аккаунта', 'Позвони другу. Не переводи деньги. Включи двухфакторную аутентификацию.')">
-                    <div class="icon-large icon-hack"></div>
-                    <div class="title">Взлом аккаунта</div>
-                </div>
-                <div class="mini-card tooltip" data-tip="Выигрыш за оплату" onclick="openModal('Фейковый выигрыш', 'Никогда не плати за выигрыш. Настоящие конкурсы бесплатны.')">
-                    <div class="icon-large icon-prize"></div>
-                    <div class="title">Фейковый выигрыш</div>
-                </div>
-                <div class="mini-card tooltip" data-tip="Оплата напрямую продавцу" onclick="openModal('Маркетплейсы', 'Оплачивай только через сайт. Не переходи в Telegram к продавцу.')">
-                    <div class="icon-large icon-market"></div>
-                    <div class="title">Маркетплейсы</div>
-                </div>
-                <div class="mini-card tooltip" data-tip="Обещают лёгкие деньги" onclick="openModal('Инвестиции', 'Слишком быстрая прибыль = обман. Не ведись на обещания лёгких денег.')">
-                    <div class="icon-large icon-invest"></div>
-                    <div class="title">Инвестиции</div>
-                </div>
+        <div class="progress-section animate-on-scroll">
+            <h3>📊 Твой прогресс</h3>
+            <div class="progress-bar-container">
+                <div class="progress-fill-main" id="mainProgress"></div>
             </div>
+            <p id="progressText">Пройди тест и отметь пункты чек-листа!</p>
         </div>
 
-        <!-- ПРАВАЯ КОЛОНКА: Глоссарий -->
-        <div class="card-modern animate-on-scroll">
-            <h3>📖 Глоссарий терминов</h3>
-            <input type="text" class="glossary-search" id="glossarySearch" placeholder="🔍 Поиск по глоссарию...">
-            <div id="glossaryContainer"></div>
+        <div class="chart-container animate-on-scroll">
+            <h3>📈 Статистика киберугроз в Беларуси</h3>
+            <canvas id="statsChart"></canvas>
+            <p style="font-size: 0.7rem; margin-top: 10px; text-align: center;">Источник: МВД РБ, данные за 2023-2025</p>
         </div>
-    </div>
 
-    <div class="info-block animate-on-scroll" style="text-align: center;">
-        <h3>💡 Совет дня</h3>
-        <p><span class="icon-tip-small"></span> <span id="dailyTip">Загрузка...</span></p>
-    </div>
-
-    <div class="info-block animate-on-scroll" style="text-align: center;">
-        <h3>📞 Экстренные телефоны</h3>
-        <p style="font-size: 1.2rem; margin: 10px 0;">
-            <strong>102</strong> — милиция &nbsp;|&nbsp;
-            <strong>8-801-100-16-11</strong> — детский телефон доверия
-        </p>
-        <p>По данным МВД Беларуси (2025): каждый день ~100 киберпреступлений. 60% пострадавших — до 25 лет.</p>
-    </div>
-</div>
+        <div class="two-columns">
+            <div class="card-modern animate-on-scroll">
+                <h3>⚠️ Топ-5 схем мошенников</h3>
+                <div class="mini-grid">
+                    <div class="mini-card tooltip" data-tip="Поддельные сайты банков, соцсетей" onclick="openModal('Фишинг', 'Поддельные сайты банков, соцсетей. Крадут пароли. Всегда проверяй адрес вручную.')">
+                        <div class="emoji">📧</div>
+                        <div class="title">Фишинг</div>
+                    </div>
+                    <div class="mini-card tooltip" data-tip="Звонят и просят код из смс" onclick="openModal('Звонок из банка', 'Клади трубку. Перезвони в банк по номеру с карты. Код из смс никому не говори.')">
+                        <div class="emoji">📞</div>
+                        <div class="title">Звонок из банка</div>
+                    </div>
+                    <div class="mini-card tooltip" data-tip="Пишут от имени друга" onclick="openModal('Взлом аккаунта', 'Позвони другу. Не переводи деньги. Включи двухфакторную аутентификацию.')">
+                        <div class="emoji">🔓</div>
+                        <div class="title">Взлом аккаунта</div>
+                    </div>
+                    <div class="mini-card tooltip" data-tip="Выигрыш за оплату" onclick="openModal('Фейковый выигрыш', 'Никогда не плати за выигрыш. Настоящие конкурсы бесплатны.')">
+                        <div class="emoji">🎁</div>
+                        <div class="title">Фейковый выигрыш</div>
+                    </div>
+                    <div class="mini-card tooltip" data-tip="Оплата напрямую продавцу" onclick="openModal('Маркетплейсы', 'Оплачивай только через сайт. Не переходи в Telegram к продавцу.')">
+                        <div class="emoji">🛒</div>
+                        <div class="title">Маркетплейсы</div>
+                    </div>
+                    <div class="mini-card tooltip" data-tip="Обещают лёгкие деньги" onclick="openModal('Инвестиции', 'Слишком быстрая прибыль = обман. Не ведись на обещания лёгких денег.')">
+                        <div class="emoji">💰</div>
+                        <div class="title">Инвестиции</div>
+                    </div>
                 </div>
             </div>
 
@@ -858,7 +719,7 @@ body {
         </div>
     </div>
 
-    <!-- ТЕСТ (13 вопросов) -->
+    <!-- ТЕСТ (остальные вкладки без изменений) -->
     <div id="quiz" class="page">
         <div class="quiz-wrap">
             <h2 style="text-align:center">⚠️ Тест: насколько ты защищён?</h2>
@@ -887,21 +748,17 @@ body {
                 <label><input type="checkbox" id="useLow" checked> a-z</label>
                 <label><input type="checkbox" id="useNum" checked> 0-9</label>
                 <label><input type="checkbox" id="useSym"> !#$%&</label>
-                <label>Длина: 
-                    <input type="number" id="passLen" value="12" min="8" max="32" step="1" style="width:75px">
-                </label>
+                <label>Длина: <input type="number" id="passLen" value="12" min="8" max="32" step="1" style="width:75px"></label>
             </div>
             <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap">
                 <button class="btn-primary" onclick="generatePass()">✨ Сгенерировать</button>
                 <button class="btn-secondary" onclick="copyPass()">📋 Копировать</button>
             </div>
-
             <div class="password-checker">
                 <h4>🔐 Проверить свой пароль</h4>
                 <input type="text" id="passwordInput" placeholder="Введи пароль для проверки" oninput="checkPasswordStrength()">
                 <div id="passwordStrengthResult" style="margin-top: 10px; font-weight: bold;"></div>
             </div>
-
             <div class="info-block" style="margin-top:20px"><strong>Совет:</strong> Не используй один пароль везде. Надёжный пароль — 12+ символов, буквы, цифры, символы.</div>
         </div>
     </div>
@@ -967,15 +824,12 @@ body {
         <div class="section-title">🔗 Проверь ссылку — безопасно или нет?</div>
         <div class="card-modern" style="margin-bottom: 20px;">
             <p style="margin-bottom: 15px;">Вставь подозрительную ссылку, и я скажу — можно ли на неё переходить. Тренируйся распознавать фишинг!</p>
-            
             <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
                 <input type="text" id="linkInput" placeholder="https:// или просто вставь ссылку..." style="flex: 1; padding: 14px; border-radius: 40px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary);">
                 <button class="btn-primary" onclick="checkLink()">🔍 Проверить</button>
                 <button class="btn-setting" onclick="clearLinkInput()">🗑️ Очистить</button>
             </div>
-            
             <div id="linkResult" style="display: none; padding: 20px; border-radius: 20px; margin-top: 15px; transition: 0.3s;"></div>
-            
             <div class="info-block" style="margin-top: 20px;">
                 <h3>📋 Примеры для тренировки (нажми, чтобы вставить):</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px;">
@@ -1007,7 +861,6 @@ body {
                 </div>
             </div>
         </div>
-
         <div class="card-modern" style="margin-bottom: 20px;">
             <h3>🔔 Уведомления</h3>
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
@@ -1021,7 +874,6 @@ body {
                 </div>
             </div>
         </div>
-
         <div class="card-modern">
             <h3>🔄 Сброс данных</h3>
             <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
@@ -1190,7 +1042,7 @@ body {
         const filtered = glossaryTerms.filter(item => item.term.toLowerCase().includes(filter.toLowerCase()));
         const container = document.getElementById('glossaryContainer');
         if(!container) return;
-        container.innerHTML = filtered.map((item, idx) => `
+        container.innerHTML = filtered.map((item) => `
             <div class="glossary-item">
                 <div class="glossary-term" onclick="toggleGlossary(this)">
                     <span>📖 ${item.term}</span>
@@ -1527,10 +1379,6 @@ body {
             `;
             resultDiv.style.background = result.bgColor;
             resultDiv.style.border = `1px solid ${result.color}`;
-            
-            if(result.isDanger) playBeep('wrong');
-            else playBeep('correct');
-            
             toast(result.verdict);
         }, 800);
     }
@@ -1759,118 +1607,6 @@ body {
             el.setAttribute('data-tip-original', el.getAttribute('data-tip'));
         }
     });
-
-    // ========== ЗВУКИ ==========
-    let audioCtx = null;
-    let audioEnabledGlobal = soundsEnabled;
-
-    function initAudio() {
-        if (!audioCtx && audioEnabledGlobal) {
-            try {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            } catch(e) { console.log('Web Audio API not supported'); }
-        }
-    }
-
-    function playBeep(type) {
-        if (!audioEnabledGlobal) return;
-        if (!audioCtx) return;
-        try {
-            const now = audioCtx.currentTime;
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.type = 'sine';
-            gainNode.gain.value = 0.2;
-            switch(type) {
-                case 'correct':
-                    oscillator.frequency.value = 880;
-                    gainNode.gain.exponentialRampToValueAtTime(0.00001, now + 0.3);
-                    oscillator.start();
-                    oscillator.stop(now + 0.3);
-                    break;
-                case 'wrong':
-                    oscillator.frequency.value = 440;
-                    gainNode.gain.exponentialRampToValueAtTime(0.00001, now + 0.4);
-                    oscillator.start();
-                    oscillator.stop(now + 0.4);
-                    break;
-                case 'click':
-                    oscillator.frequency.value = 660;
-                    gainNode.gain.exponentialRampToValueAtTime(0.00001, now + 0.1);
-                    oscillator.start();
-                    oscillator.stop(now + 0.1);
-                    break;
-                case 'victory':
-                    oscillator.frequency.value = 523.25;
-                    oscillator.start();
-                    oscillator.stop(now + 0.2);
-                    setTimeout(() => {
-                        if(audioCtx) {
-                            const osc2 = audioCtx.createOscillator();
-                            const gain2 = audioCtx.createGain();
-                            osc2.connect(gain2);
-                            gain2.connect(audioCtx.destination);
-                            osc2.frequency.value = 659.25;
-                            gain2.gain.value = 0.2;
-                            gain2.gain.exponentialRampToValueAtTime(0.00001, now + 0.5);
-                            osc2.start();
-                            osc2.stop(now + 0.5);
-                        }
-                    }, 200);
-                    break;
-            }
-        } catch(e) { console.log('Audio play error:', e); }
-    }
-
-    const originalOpenModal = openModal;
-    window.openModal = function(title, text) {
-        playBeep('click');
-        originalOpenModal(title, text);
-    };
-
-    const originalSelectAnswer = selectAnswer;
-    window.selectAnswer = function(idx) {
-        playBeep('click');
-        originalSelectAnswer(idx);
-    };
-
-    const originalShowResult = showResult;
-    window.showResult = function() {
-        playBeep('victory');
-        originalShowResult();
-    };
-
-    const originalGeneratePass = generatePass;
-    window.generatePass = function() {
-        playBeep('click');
-        originalGeneratePass();
-    };
-
-    const originalCopyPass = copyPass;
-    window.copyPass = function() {
-        playBeep('correct');
-        originalCopyPass();
-    };
-
-    const originalToggleCheck = toggleCheck;
-    window.toggleCheck = function(i) {
-        if(checklistState[i]) playBeep('correct');
-        else playBeep('wrong');
-        originalToggleCheck(i);
-    };
-
-    document.body.addEventListener('click', function initAudioOnFirstClick() {
-        if(audioEnabledGlobal && !audioCtx) {
-            initAudio();
-            if(audioCtx) {
-                audioCtx.resume();
-                toast('🔊 Звуки активированы!');
-            }
-        }
-        document.body.removeEventListener('click', initAudioOnFirstClick);
-    }, { once: true });
 
     // ========== ТАБЫ ==========
     document.querySelectorAll('.tab').forEach(btn => {
